@@ -1,3 +1,5 @@
+TOC will be added in the final post, since github doesn't recognize [TOC] option...
+
 ##Intro
 
 **Work in Progress!** I am happy to see your help with the list! :)
@@ -10,12 +12,10 @@ The list comes from the following resources:
 
 * [SO: What are the new features in C++17?](http://stackoverflow.com/questions/38060436/what-are-the-new-features-in-c17)
 * [cppreference.com/C++ compiler support](http://en.cppreference.com/w/cpp/compiler_support).
-* [AnthonyCalandra/modern-cpp-features cheat sheet](https://github.com/AnthonyCalandra/modern-cpp-features) - unfortunately it doesn't include all the features of C++17.
+* [AnthonyCalandra/modern-cpp-features cheat sheet](https://github.com/AnthonyCalandra/modern-cpp-features) - unfortunately it doesn't include all the features of C++17, so this is also why I've started a separate try on that.
 * plus other findings and mentions
 
-
 ##Language Features
-
 
 ###New auto rules for direct-list-initialization 
 [N3922](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3922.html)
@@ -34,9 +34,7 @@ int x = foo(); // copy-initialization
 int x{foo}; // direct-initialization
 ```
 
-and for direct initialization, new rules are:
-
-For direct list-initialization:
+And for the direct initialization, new rules are:
 
 * For a braced-init-list with only a single element, auto deduction will deduce from that entry;
 * For a braced-init-list with more than one element, auto deduction will be ill-formed.
@@ -47,7 +45,7 @@ For direct list-initialization:
 | GCC: 6.0 | Clang: 2.5 | MSVC: 15.0 preview 5|
 |---------:|------------|------------|
 
-Self expansionary. But basically it allows to just have the condition without passing the message, version with the message will also be available. It will be compatible with other asserts like `BOOST_STATIC_ASSERT` (that didn't take any message from the start).
+Self explanatory. Basically, it allows to just have the condition without passing the message, version with the message will also be available. It will be compatible with other asserts like `BOOST_STATIC_ASSERT` (that didn't take any message from the start).
 
 
 ###typename in a template template parameter 
@@ -80,7 +78,7 @@ Allows to write:
 
 ``` cpp
 namespace A::B::C {
-   //Ö
+   //‚Ä¶
 }
 ```
 Rather than:
@@ -89,7 +87,7 @@ Rather than:
 namespace A {
     namespace B {
         namespace C {
-            //Ö
+            //‚Ä¶
         }
     }
 }
@@ -164,8 +162,7 @@ Dynamic exception specifications were deprecated in C++11. This paper formally p
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
 |---------:|------------|------------|
 
-Previously exception specifications for a function didn't belonged to the type of such function, but now it should be part of it...
-
+Previously exception specifications for a function didn't belonged to the type of the function, but it will be part of it.
 
 ###Aggregate initialization of classes with base classes 
 [P0017R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0017r1.html)
@@ -173,7 +170,7 @@ Previously exception specifications for a function didn't belonged to the type o
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-Previously if a class was derived from some other type you coudn't use agregate initialization. But now the restriction is removed.
+If a class was derived from some other type you coudn't use agregate initialization. But now the restriction is removed.
 
 ```cpp
 struct base { int a1, a2; };
@@ -183,7 +180,7 @@ derived d1{{1, 2}, 3};      // full explicit initialization
 derived d1{{}, 1};          // the base is value initialized
 ```
 
-so tu sum up: from the standard:
+To sum up: from the standard:
 
 > An aggregate is an array or a class with:
 * no user-provided constructors (including those inherited from a base class),
@@ -406,7 +403,32 @@ todo...
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+New versions of the if and switch statements for C++: `if (init; condition)` and `switch (init; condition)`. 
+
+This should simplyfy the code. For example previously you had to write:
+
+```cppp
+{   
+    auto val = GetValue();   
+    if (val)    
+        // on success  
+    else   
+        // on false... 
+}
+```
+
+Look, that `val` has a separate scope, without it it will 'leak'.
+
+Now you can write:
+
+```cppp   
+if (auto val = GetValue(); val)    
+    // on success  
+else   
+    // on false... 
+```
+
+`val` is visible only inside the `if` and `else` statemenets, so it doesn't 'leak'.
 
 ###Inline variables 
 
@@ -461,7 +483,7 @@ Articles:
 
 ##Library Features
 
-###Merged: The Parallelism TS, a.k.a. ìParallel STL.î, 
+###Merged: The Parallelism TS, a.k.a. ‚ÄúParallel STL.‚Äù, 
 
 [P0024R2](http://isocpp.org/files/papers/P0024R2.html)
 
