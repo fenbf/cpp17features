@@ -10,6 +10,7 @@ The list comes from the following resources:
 
 * [SO: What are the new features in C++17?](http://stackoverflow.com/questions/38060436/what-are-the-new-features-in-c17)
 * [cppreference.com/C++ compiler support](http://en.cppreference.com/w/cpp/compiler_support).
+* [AnthonyCalandra/modern-cpp-features cheat sheet](https://github.com/AnthonyCalandra/modern-cpp-features) - unfortunately it doesn't include all the features of C++17.
 * plus other findings and mentions
 
 
@@ -483,3 +484,4 @@ Articles:
 ###[std::shared_mutex](http://en.cppreference.com/w/cpp/thread/shared_mutex) (untimed) 
 
 [N4508](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4508.html)
+
