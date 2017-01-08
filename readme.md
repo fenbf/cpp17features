@@ -401,9 +401,12 @@ Now we can write:
 auto [ a, b, c ] = tuple;
 ```
 
+Such expressions works also on structs, pairs and arrays.
+
 Articles:
 
 * [Steve Lorimer, C++17 Structured Bindings](https://skebanga.github.io/structured-bindings/)
+* [jrb-programming, Emulating C++17 Structured Bindings in C++14](http://jrb-programming.blogspot.fr/2016/02/emulating-c17-structured-binding-in-c14.html)
 
 ###Hexadecimal floating-point literals 
 
@@ -412,7 +415,7 @@ Articles:
 | GCC: 3.0 | Clang: Yes | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+Allows to express some special floating point values, for example, the smallest normal IEEE-754 single precision value is readily written as `0x1.0p-126`.
 
 ###init-statements for if and switch 
 
