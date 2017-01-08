@@ -39,6 +39,8 @@ And for the direct initialization, new rules are:
 * For a braced-init-list with only a single element, auto deduction will deduce from that entry;
 * For a braced-init-list with more than one element, auto deduction will be ill-formed.
 
+Basically, `auto x { 1 };` will be now deduced as `int`, but before it was an initializer list.
+
 ###static_assert with no message 
 [N3928](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3928.pdf)
 
@@ -385,7 +387,23 @@ todo...
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+Helps when using tuples as a return type. It will automatically create variables and `tie` them. More details in [P0144R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0144r0.pdf)
+
+For example:
+
+```cpp
+std::tie(a, b, c) = tuple; // a, b, c need to be declared first
+```
+
+Now we can write:
+
+```cpp
+auto [ a, b, c ] = tuple;
+```
+
+Articles:
+
+* [Steve Lorimer, C++17 Structured Bindings](https://skebanga.github.io/structured-bindings/)
 
 ###Hexadecimal floating-point literals 
 
@@ -407,7 +425,7 @@ New versions of the if and switch statements for C++: `if (init; condition)` and
 
 This should simplyfy the code. For example previously you had to write:
 
-```cppp
+```cpp
 {   
     auto val = GetValue();   
     if (val)    
@@ -421,7 +439,7 @@ Look, that `val` has a separate scope, without it it will 'leak'.
 
 Now you can write:
 
-```cppp   
+```cpp 
 if (auto val = GetValue(); val)    
     // on success  
 else   
