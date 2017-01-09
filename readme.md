@@ -141,6 +141,7 @@ More background here in [P0036](http://www.open-std.org/jtc1/sc22/wg21/docs/pape
 Articles:
 
 * [C++ Truths: Folding Monadic Functions](http://cpptruths.blogspot.com/2017/01/folding-monadic-functions.html)
+* [Simon Brand: Exploding tuples with fold expressions](https://tartanllama.github.io/c++/2016/11/10/exploding-tuples-fold-expressions/)
 
 ###Remove Deprecated Use of the register Keyword 
 [P0001R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0001r1.html)
