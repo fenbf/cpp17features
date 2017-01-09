@@ -309,7 +309,34 @@ todo...
 | GCC: 7.0 | Clang: not yet | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+Before C++17, template deduction worked for functions but not for classes.
+For instance, the following code was legal:
+
+```
+\#include <utility>
+void f(std::pair<int, char>);
+f(std::make_pair(42, 'z'));
+```
+
+because `std::make_pair` is a _template function_.
+But the following was not legal:
+
+```
+\#include <utility>
+void f(std::pair<int, char>);
+f(std::pair(42, 'z'));
+```
+
+although it is semantically equivalent, because `std::pair` is a _template class_, and template classes could not apply type deduction.
+So before C++17 one has to write out the types explicitly, even though this does not add any new information:
+
+```
+\#include <utility>
+void f(std::pair<int, char>);
+f(std::pair<int, char>(42, 'z'));
+```
+
+This is fixed in C++17 where template class constructors can deduce type parameters. The syntax for constructing such template classes is therefore uniform with the syntax for constructing non-template classes.
 
 ###Non-type template parameters with auto type 
 [P0127R2](http://wg21.link/p0127r2)
