@@ -394,7 +394,32 @@ todo...
 | GCC: not yet | Clang: 4.0 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+Allows you to inject names with *using-declarations* from all types in a parameter pack.
+
+In order to expose `operator()` from all base classes in a variadic template, we used to have to resort to recursion:
+
+```cpp
+template <typename T, typename... Ts>
+struct Overloader : T, Overloader<Ts...> {
+    using T::operator();
+    using Overloader<Ts...>::operator();
+    // […]
+};
+
+template <typename T> struct Overloader<T> : T {
+    using T::operator();
+};
+```
+
+Now we can simply expand the parameter pack in the *using-declaration*:
+
+```cpp
+template <typename... Ts>
+struct Overloader : Ts... {
+    using Ts::operator()...;
+    // […]
+};
+```
 
 ### Decomposition declarations
 
