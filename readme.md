@@ -110,7 +110,22 @@ namespace A {
 | GCC: 4.9 (namespaces)/ 6 (enums) | Clang: 3.4 | MSVC: 14.0 |
 |---------:|------------|------------|
 
-todo...
+Permits attributes on enumerators and namespaces. More details in [N4196](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4196.html).
+
+```cpp
+enum E {
+  foobar = 0,
+  foobat [[deprecated]] = foobar
+};
+
+E e = foobat; // Emits warning
+
+namespace [[deprecated]] old_stuff{
+    void legacy();
+}
+
+old_stuff::legacy(); // Emits warning
+```
 
 ###u8 character literals 
 [N4267](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4267.html)
@@ -141,6 +156,7 @@ More background here in [P0036](http://www.open-std.org/jtc1/sc22/wg21/docs/pape
 Articles:
 
 * [C++ Truths: Folding Monadic Functions](http://cpptruths.blogspot.com/2017/01/folding-monadic-functions.html)
+* [Simon Brand: Exploding tuples with fold expressions](https://tartanllama.github.io/c++/2016/11/10/exploding-tuples-fold-expressions/)
 
 ###Remove Deprecated Use of the register Keyword 
 [P0001R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0001r1.html)
@@ -579,19 +595,59 @@ The function returns the number of uncaught exception objects in the current thr
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-The static-if for C++!
+The static-if for C++! This allows you to discard branches of an if statement at compile-time based on a constant expression condition.
 
 ```cpp
 if constexpr(cond)
-     statement1;
+     statement1; // Discarded if cond is false
 else
-     statement2;
+     statement2; // Discarded if cond is true
 ```
+
+This removes a lot of the necessity for tag dispatching and SFINAE:
+
+#### SFINAE
+```cpp
+template <typename T, std::enable_if_t<std::is_arithmetic<T>{}>* = nullptr>
+auto get_value(T t) {/*...*/}
+
+template <typename T, std::enable_if_t<!std::is_arithmetic<T>{}>* = nullptr>
+auto get_value(T t) {/*...*/}
+```
+
+#### Tag dispatching
+```cpp
+template <typename T>
+auto get_value(T t, std::true_type) {/*...*/}
+
+template <typename T>
+auto get_value(T t, std::false_type) {/*...*/}
+
+template <typename T>
+auto get_value(T t) {
+    return get_value(t, std::is_arithmetic<T>{}); 
+}
+```
+
+#### if constexpr
+```cpp
+template <typename T>
+auto get_value(T t) {
+     if constexpr (std::is_arithmetic_v<T>) {
+         //...
+     }
+     else {
+         //...
+     }
+}
+```
+
 
 Articles:
 
 * [LoopPerfect Blog, C++17 vs C++14 - Round 1 - if-constexpr](https://www.loopperfect.com/blog/c++-before-and-after-constexpr-if/)
 * [SO: constexpr if and static_assert](http://stackoverflow.com/questions/38304847/constexpr-if-and-static-assert)
+* [Simon Brand: Simplifying templates and #ifdefs with if constexpr](https://tartanllama.github.io/c++/2016/12/12/if-constexpr/)
 
 ##Library Features
 
