@@ -503,7 +503,7 @@ void foo() {
 }
 ```
 
-
+[A 3 min video about [[maybe_unused]] in Jason Turner's C++ Weekly](https://www.youtube.com/watch?v=WSPmNL9834U)
 
 
 ###Ignore unknown attributes 
