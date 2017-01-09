@@ -1,5 +1,7 @@
 TOC will be added in the final post, since github doesn't recognize [TOC] option...
 
+This file is published as [bfilipek.com/C++17 features](hhttp://www.bfilipek.com/2017/01/cpp17features.html) blog post.
+
 ##Intro
 
 **Work in Progress!** I am happy to see your help with the list! :)
@@ -139,7 +141,7 @@ Articles:
 | GCC: 7.0 | Clang: 3.8 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+The `register` keyword was deprecated in the 2011 C++ standard. C++17 tries to clear the standard, so the keyword is now removed.
 
 ###Remove Deprecated operator++(bool) 
 [P0002R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0002r1.html)
@@ -165,6 +167,13 @@ Dynamic exception specifications were deprecated in C++11. This paper formally p
 |---------:|------------|------------|
 
 Previously exception specifications for a function didn't belonged to the type of the function, but it will be part of it.
+
+We'll get an error in the case:
+
+```cpp
+void (*p)() throw(int);
+void (**pp)() noexcept = &p;   // error: cannot convert to pointer to noexcept function
+```
 
 ###Aggregate initialization of classes with base classes 
 [P0017R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0017r1.html)
