@@ -593,6 +593,7 @@ Articles:
 
 * [LoopPerfect Blog, C++17 vs C++14 - Round 1 - if-constexpr](https://www.loopperfect.com/blog/c++-before-and-after-constexpr-if/)
 * [SO: constexpr if and static_assert](http://stackoverflow.com/questions/38304847/constexpr-if-and-static-assert)
+* [Simon Brand: Simplifying templates and #ifdefs with if constexpr](https://tartanllama.github.io/c++/2016/12/12/if-constexpr/)
 
 ##Library Features
 
