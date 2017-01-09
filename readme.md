@@ -59,8 +59,15 @@ Self-explanatory. It allows just to have the condition without passing the messa
 | GCC: 5.0 | Clang: 3.5 | MSVC: 14.0 |
 |---------:|------------|------------|
 
-todo...
+Allows you to use `typename` instead of `class` when declaring a template template parameter. Normal type parameters can use them interchangeably, but template template parameters were restricted to `class`, so this change unifies these forms somewhat.
 
+``` cpp
+template <template <typename...> typename Container>
+//            used to be invalid ^^^^^^^^
+struct foo;
+
+foo<std::vector> my_foo;
+```
 
 ###Removing trigraphs 
 [N4086](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4086.html)
