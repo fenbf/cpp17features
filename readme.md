@@ -580,14 +580,53 @@ The function returns the number of uncaught exception objects in the current thr
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-The static-if for C++!
+The static-if for C++! This allows you to discard branches of an if statement at compile-time based on a constant expression condition.
 
 ```cpp
 if constexpr(cond)
-     statement1;
+     statement1; // Discarded if cond is false
 else
-     statement2;
+     statement2; // Discarded if cond is true
 ```
+
+This removes a lot of the necessity for tag dispatching and SFINAE:
+
+#### SFINAE
+```cpp
+template <typename T, std::enable_if_t<std::is_arithmetic<T>{}>* = nullptr>
+auto get_value(T t) {/*...*/}
+
+template <typename T, std::enable_if_t<!std::is_arithmetic<T>{}>* = nullptr>
+auto get_value(T t) {/*...*/}
+```
+
+#### Tag dispatching
+```cpp
+template <typename T>
+auto get_value(T t, std::true_type) {/*...*/}
+
+template <typename T>
+auto get_value(T t, std::false_type) {/*...*/}
+
+template <typename T>
+auto get_value(T t) {
+    return get_value(t, std::is_arithmetic<T>{}); 
+}
+```
+
+#### if constexpr
+```cpp
+template <typename T>
+auto get_value(T t) {
+     if constexpr (std::is_arithmetic_v<T>) {
+         //...
+     }
+     else {
+         //...
+     }
+}
+```
+
 
 Articles:
 
