@@ -110,7 +110,22 @@ namespace A {
 | GCC: 4.9 (namespaces)/ 6 (enums) | Clang: 3.4 | MSVC: 14.0 |
 |---------:|------------|------------|
 
-todo...
+Permits attributes on enumerators and namespaces. More details in [N4196](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4196.html).
+
+```cpp
+enum E {
+  foobar = 0,
+  foobat [[deprecated]] = foobar
+};
+
+E e = foobat; // Emits warning
+
+namespace [[deprecated]] old_stuff{
+    void legacy();
+}
+
+old_stuff::legacy(); // Emits warning
+```
 
 ###u8 character literals 
 [N4267](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4267.html)
