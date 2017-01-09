@@ -376,7 +376,21 @@ todo...
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+Suppresses compiler warnings about unused entities when they are declared with `[[maybe_unused]]`. More details in [P0068R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0068r0.pdf).
+
+```cpp
+                 static void impl1() { ... } // Compilers may warn about this
+[[maybe_unused]] static void impl2() { ... } // Warning suppressed
+
+
+void foo() {
+                      int x = 42; // Compilers may warn about this
+     [[maybe_unused]] int y = 42; // Warning suppressed
+}
+```
+
+
+
 
 ###Ignore unknown attributes 
 
