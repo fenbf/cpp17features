@@ -49,7 +49,7 @@ Basically, `auto x { 1 };` will be now deduced as `int`, but before it was an in
 | GCC: 6.0 | Clang: 2.5 | MSVC: 15.0 preview 5|
 |---------:|------------|------------|
 
-Self explanatory. Basically, it allows to just have the condition without passing the message, version with the message will also be available. It will be compatible with other asserts like `BOOST_STATIC_ASSERT` (that didn't take any message from the start).
+Self-explanatory. It allows just to have the condition without passing the message, version with the message will also be available. It will be compatible with other asserts like `BOOST_STATIC_ASSERT` (that didn't take any message from the start).
 
 
 ###typename in a template template parameter 
@@ -149,7 +149,7 @@ The `register` keyword was deprecated in the 2011 C++ standard. C++17 tries to c
 | GCC: 7.0 | Clang: 3.8 | MSVC: not yet |
 |---------:|------------|------------|
 
-The ++ operator for bool was deprecated in the original 1998 C++ standard, and it is past time to formally remove it. 
+The ++ operator for `bool` was deprecated in the original 1998 C++ standard, and it is past time to remove it formally. 
 
 ###Removing Deprecated Exception Specifications from C++17 
 [P0003R5](http://wg21.link/p0003r5)
@@ -166,7 +166,7 @@ Dynamic exception specifications were deprecated in C++11. This paper formally p
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
 |---------:|------------|------------|
 
-Previously exception specifications for a function didn't belonged to the type of the function, but it will be part of it.
+Previously exception specifications for a function didn't belong to the type of the function, but it will be part of it.
 
 We'll get an error in the case:
 
@@ -181,7 +181,7 @@ void (**pp)() noexcept = &p;   // error: cannot convert to pointer to noexcept f
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-If a class was derived from some other type you coudn't use agregate initialization. But now the restriction is removed.
+If a class was derived from some other type you couldn't use aggregate initialization. But now the restriction is removed.
 
 ```cpp
 struct base { int a1, a2; };
@@ -206,7 +206,7 @@ To sum up: from the standard:
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-`this` pointer is implicitly captured for lam
+`this` pointer is implicitly captured by lambdas inside member functions. Sometimes, it's useful to capture `this` by value. Such change can reduce problems in multithreading.
 
 ###Using attribute namespaces without repetition 
 [P0028R4](http://wg21.link/p0028r4)
@@ -342,7 +342,7 @@ Into:
 }
 ```
 
-Types of `__begin` and `__end` might be different, only the comparison operator is required. This little change allows Range TS users a better experience.
+Types of `__begin` and `__end` might be different; only the comparison operator is required. This little change allows Range TS users a better experience.
 
 ###[[fallthrough]] attribute 
 
@@ -410,7 +410,7 @@ Now we can write:
 auto [ a, b, c ] = tuple;
 ```
 
-Such expressions works also on structs, pairs and arrays.
+Such expressions also work on structs, pairs, and arrays.
 
 Articles:
 
@@ -435,7 +435,7 @@ Allows to express some special floating point values, for example, the smallest 
 
 New versions of the if and switch statements for C++: `if (init; condition)` and `switch (init; condition)`. 
 
-This should simplyfy the code. For example previously you had to write:
+This should simplify the code. For example, previously you had to write:
 
 ```cpp
 {   
@@ -458,7 +458,7 @@ else
     // on false... 
 ```
 
-`val` is visible only inside the `if` and `else` statemenets, so it doesn't 'leak'.
+`val` is visible only inside the `if` and `else` statements, so it doesn't 'leak'.
 
 ###Inline variables 
 
@@ -467,7 +467,7 @@ else
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-Previously only methods/functions could be specified as `inline`, now you can do the same with variables.
+Previously only methods/functions could be specified as `inline`; now you can do the same with variables.
 
 
 ###DR: Matching of template template-arguments excludes compatible templates 
