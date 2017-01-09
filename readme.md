@@ -312,7 +312,7 @@ todo...
 Before C++17, template deduction worked for functions but not for classes.
 For instance, the following code was legal:
 
-```
+```cpp
 \#include <utility>
 void f(std::pair<int, char>);
 f(std::make_pair(42, 'z'));
@@ -321,7 +321,7 @@ f(std::make_pair(42, 'z'));
 because `std::make_pair` is a _template function_.
 But the following was not legal:
 
-```
+```cpp
 \#include <utility>
 void f(std::pair<int, char>);
 f(std::pair(42, 'z'));
@@ -330,7 +330,7 @@ f(std::pair(42, 'z'));
 although it is semantically equivalent, because `std::pair` is a _template class_, and template classes could not apply type deduction.
 So before C++17 one has to write out the types explicitly, even though this does not add any new information:
 
-```
+```cpp
 \#include <utility>
 void f(std::pair<int, char>);
 f(std::pair<int, char>(42, 'z'));
