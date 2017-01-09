@@ -367,7 +367,24 @@ todo...
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+`[[nodiscard]]` is used to stress that the return value of a function is not to be discarded, on pain of a compiler warning. More details in [P0068R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0068r0.pdf).
+
+```cpp
+[[nodiscard]] int foo();
+void bar() {
+    foo(); // Warning emitted, return value of a nodiscard function is discarded
+}
+```
+
+This attribute can also be applied to types in order to mark all functions which return that type as `[[nodiscard]]`:
+
+```cpp
+[[nodiscard]] struct DoNotThrowMeAway{};
+DoNotThrowMeAway i_promise();
+void oops() {
+    i_promise(); // Warning emitted, return value of a nodiscard function is discarded
+}
+```
 
 ###[[maybe_unused]] attribute 
 
