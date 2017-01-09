@@ -385,7 +385,13 @@ todo...
 | GCC: Yes | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+Clarifies that implementations should ignore any attribute namespaces which they do not support, as this used to be unspecified. More details in [P0283R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0283r1.pdf).
+
+```cpp
+//compilers which don't support MyCompilerSpecificNamespace will ignore this attribute
+[[MyCompilerSpecificNamespace::do_special_thing]] 
+void foo();
+```
 
 ###Pack expansions in using-declarations 
 
