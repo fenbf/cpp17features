@@ -482,6 +482,7 @@ void oops() {
     i_promise(); // Warning emitted, return value of a nodiscard function is discarded
 }
 ```
+[A 4 min video about [[nodiscard]] in Jason Turner's C++ Weekly](https://www.youtube.com/watch?v=l_5PF3GQLKc)
 
 ###[[maybe_unused]] attribute 
 
