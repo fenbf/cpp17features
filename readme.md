@@ -358,7 +358,19 @@ Types of `__begin` and `__end` might be different; only the comparison operator 
 | GCC: 7.0 | Clang: 3.9 | MSVC: 15.0 Preview 4 |
 |---------:|------------|------------|
 
-todo...
+Indicates that a fallthrough in a switch statement is intentional and a warning should not be issued for it. More details in [P0068R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0068r0.pdf).
+
+```cpp
+switch (c) {
+case 'a':
+    f(); // Warning emitted, fallthrough is perhaps a programmer error
+case 'b':
+    g();
+[[fallthrough]]; // Warning suppressed, fallthrough is intentional
+case 'c':
+    h();
+}
+```
 
 ###[[nodiscard]] attribute 
 
