@@ -397,6 +397,8 @@ todo...
 
 todo...
 
+[A 5 min episode of Jason Turner's C++ Weekly about constexpr lambdas](https://www.youtube.com/watch?v=kmza9U_niq4)
+
 ###Differing begin and end types in range-based for 
 [P0184R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0184r0.html) 
 
