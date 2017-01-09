@@ -1,6 +1,6 @@
 TOC will be added in the final post, since github doesn't recognize [TOC] option...
 
-This file is published as [bfilipek.com/C++17 features](hhttp://www.bfilipek.com/2017/01/cpp17features.html) blog post.
+This file is published as [bfilipek.com/C++17 features](http://www.bfilipek.com/2017/01/cpp17features.html) blog post.
 
 ##Intro
 
