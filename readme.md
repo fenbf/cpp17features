@@ -27,7 +27,7 @@ The list comes from the following resources:
 
 Fixes some cases with auto type deduction. The full background can be found in [Auto and braced-init-lists](http://open-std.org/JTC1/SC22/WG21/docs/papers/2013/n3681.html), by Ville Voutilainen.
 
-It fixes the problem of deducing `std::initialize_list` like:
+It fixes the problem of deducing `std::initializer_list` like:
 
 ```cpp
 auto x = foo(); // copy-initialization
@@ -72,7 +72,7 @@ foo<std::vector> my_foo;
 ###Removing trigraphs 
 [N4086](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4086.html)
 
-| GCC: 5.1 | Clang: 3.5 | MSVC: not yet |
+| GCC: 5.1 | Clang: 3.5 | MSVC: Yes |
 |---------:|------------|------------|
 
 Removes `??=`, `??(`, `??>`, ... 
