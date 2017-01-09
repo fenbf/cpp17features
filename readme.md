@@ -396,14 +396,14 @@ todo...
 
 todo...
 
-###Structured Bindings 
+### Decomposition declarations
 
 [P0217R3](http://wg21.link/p0217r3)
 
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
 |---------:|------------|------------|
 
-Helps when using tuples as a return type. It will automatically create variables and `tie` them. More details in [P0144R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0144r0.pdf)
+Helps when using tuples as a return type. It will automatically create variables and `tie` them. More details in [P0144R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0144r0.pdf). Was originally called "structured bindings".
 
 For example:
 
@@ -423,6 +423,7 @@ Articles:
 
 * [Steve Lorimer, C++17 Structured Bindings](https://skebanga.github.io/structured-bindings/)
 * [jrb-programming, Emulating C++17 Structured Bindings in C++14](http://jrb-programming.blogspot.fr/2016/02/emulating-c17-structured-binding-in-c14.html)
+* [Simon Brand, Adding C++17 decomposition declaration support to your classes](https://tartanllama.github.io/c++/2016/07/20/structured-bindings/)
 
 ###Hexadecimal floating-point literals 
 
