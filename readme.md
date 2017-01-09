@@ -229,7 +229,27 @@ To sum up: from the standard:
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-`this` pointer is implicitly captured by lambdas inside member functions. Sometimes, it's useful to capture `this` by value. Such change can reduce problems in multithreading.
+`this` pointer is implicitly captured by lambdas inside member functions. Member variables are always accessed by this pointer.
+
+Example:
+```cpp
+struct S {
+   int x ;
+   void f() {
+      // The following lambda captures are currently identical
+      auto a = [&]() { x = 42 ; } // OK: transformed to (*this).x
+      auto b = [=]() { x = 43 ; } // OK: transformed to (*this).x
+      a();
+      assert( x == 42 );
+      b();
+      assert( x == 43 );
+   }
+};
+```
+
+Now you can use `*this` when declaring a lambda, for example `auto b = [=, *this]() { x = 43 ; }`. That way `this` is captured by value. Note that the form [&,this] is redundant but accepted for compatibility with ISO C++14.
+
+Capturing by value might be especially important for async invocation, paraller processing.
 
 ###Using attribute namespaces without repetition 
 [P0028R4](http://wg21.link/p0028r4)
