@@ -265,7 +265,27 @@ todo...
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+In the following example:
+
+```cpp
+class alignas(16) float4 {
+	float f[4];
+};
+float4 *p = new float4[1000];
+```
+
+C++11/14 did not specify any mechanism by which over-aligned data can be dynamically allocated correctly (i.e. respecting the alignment of the data). In the example above, not only is an implementation of C++ not required to allocate properly-aligned memory for the array, for practical purposes it is very nearly required to do the allocation incorrectly.
+
+C++17 fixes that hole by introducing additional memory allocation functions that use align parameter:
+
+```cpp
+void* operator new(std::size_t, std::align_val_t);
+void* operator new[](std::size_t, std::align_val_t);
+void operator delete(void*, std::align_val_t);
+void operator delete[](void*, std::align_val_t);
+void operator delete(void*, std::size_t, std::align_val_t);
+void operator delete[](void*, std::size_t, std::align_val_t);
+```
 
 ###Unary fold expressions and empty parameter packs 
 [P0036R0](http://wg21.link/p0036r0) 
