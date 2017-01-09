@@ -59,8 +59,15 @@ Self-explanatory. It allows just to have the condition without passing the messa
 | GCC: 5.0 | Clang: 3.5 | MSVC: 14.0 |
 |---------:|------------|------------|
 
-todo...
+Allows you to use `typename` instead of `class` when declaring a template template parameter. Normal type parameters can use them interchangeably, but template template parameters were restricted to `class`, so this change unifies these forms somewhat.
 
+``` cpp
+template <template <typename...> typename Container>
+//            used to be invalid ^^^^^^^^
+struct foo;
+
+foo<std::vector> my_foo;
+```
 
 ###Removing trigraphs 
 [N4086](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4086.html)
@@ -351,7 +358,19 @@ Types of `__begin` and `__end` might be different; only the comparison operator 
 | GCC: 7.0 | Clang: 3.9 | MSVC: 15.0 Preview 4 |
 |---------:|------------|------------|
 
-todo...
+Indicates that a fallthrough in a switch statement is intentional and a warning should not be issued for it. More details in [P0068R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0068r0.pdf).
+
+```cpp
+switch (c) {
+case 'a':
+    f(); // Warning emitted, fallthrough is perhaps a programmer error
+case 'b':
+    g();
+[[fallthrough]]; // Warning suppressed, fallthrough is intentional
+case 'c':
+    h();
+}
+```
 
 ###[[nodiscard]] attribute 
 
@@ -360,7 +379,24 @@ todo...
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+`[[nodiscard]]` is used to stress that the return value of a function is not to be discarded, on pain of a compiler warning. More details in [P0068R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0068r0.pdf).
+
+```cpp
+[[nodiscard]] int foo();
+void bar() {
+    foo(); // Warning emitted, return value of a nodiscard function is discarded
+}
+```
+
+This attribute can also be applied to types in order to mark all functions which return that type as `[[nodiscard]]`:
+
+```cpp
+[[nodiscard]] struct DoNotThrowMeAway{};
+DoNotThrowMeAway i_promise();
+void oops() {
+    i_promise(); // Warning emitted, return value of a nodiscard function is discarded
+}
+```
 
 ###[[maybe_unused]] attribute 
 
@@ -369,7 +405,21 @@ todo...
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+Suppresses compiler warnings about unused entities when they are declared with `[[maybe_unused]]`. More details in [P0068R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0068r0.pdf).
+
+```cpp
+                 static void impl1() { ... } // Compilers may warn about this
+[[maybe_unused]] static void impl2() { ... } // Warning suppressed
+
+
+void foo() {
+                      int x = 42; // Compilers may warn about this
+     [[maybe_unused]] int y = 42; // Warning suppressed
+}
+```
+
+
+
 
 ###Ignore unknown attributes 
 
@@ -378,7 +428,13 @@ todo...
 | GCC: Yes | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+Clarifies that implementations should ignore any attribute namespaces which they do not support, as this used to be unspecified. More details in [P0283R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0283r1.pdf).
+
+```cpp
+//compilers which don't support MyCompilerSpecificNamespace will ignore this attribute
+[[MyCompilerSpecificNamespace::do_special_thing]] 
+void foo();
+```
 
 ###Pack expansions in using-declarations 
 
@@ -387,16 +443,41 @@ todo...
 | GCC: not yet | Clang: 4.0 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+Allows you to inject names with *using-declarations* from all types in a parameter pack.
 
-###Structured Bindings 
+In order to expose `operator()` from all base classes in a variadic template, we used to have to resort to recursion:
+
+```cpp
+template <typename T, typename... Ts>
+struct Overloader : T, Overloader<Ts...> {
+    using T::operator();
+    using Overloader<Ts...>::operator();
+    // […]
+};
+
+template <typename T> struct Overloader<T> : T {
+    using T::operator();
+};
+```
+
+Now we can simply expand the parameter pack in the *using-declaration*:
+
+```cpp
+template <typename... Ts>
+struct Overloader : Ts... {
+    using Ts::operator()...;
+    // […]
+};
+```
+
+### Decomposition declarations
 
 [P0217R3](http://wg21.link/p0217r3)
 
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
 |---------:|------------|------------|
 
-Helps when using tuples as a return type. It will automatically create variables and `tie` them. More details in [P0144R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0144r0.pdf)
+Helps when using tuples as a return type. It will automatically create variables and `tie` them. More details in [P0144R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0144r0.pdf). Was originally called "structured bindings".
 
 For example:
 
@@ -416,6 +497,7 @@ Articles:
 
 * [Steve Lorimer, C++17 Structured Bindings](https://skebanga.github.io/structured-bindings/)
 * [jrb-programming, Emulating C++17 Structured Bindings in C++14](http://jrb-programming.blogspot.fr/2016/02/emulating-c17-structured-binding-in-c14.html)
+* [Simon Brand, Adding C++17 decomposition declaration support to your classes](https://tartanllama.github.io/c++/2016/07/20/structured-bindings/)
 
 ###Hexadecimal floating-point literals 
 
