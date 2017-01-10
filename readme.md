@@ -133,9 +133,13 @@ old_stuff::legacy(); // Emits warning
 | GCC: 6.0 | Clang: 3.6 | MSVC: 14.0 |
 |---------:|------------|------------|
 
-`u8'U'` character literals.
+> UTF-8 character literal, e.g. `u8'a'`. Such literal has type `char` and the value equal to ISO 10646 code point value of c-char, provided that the code point value is representable with a single UTF-8 code unit. If c-char is not in Basic Latin or C0 Controls Unicode block, the program is ill-formed.
 
-update needed...
+The compiler will report errors if character cannot fit inside `u8` ASCII range.
+
+Reference:
+
+* [cppreference.com/character literal](http://en.cppreference.com/w/cpp/language/character_literal)
 
 ###Allow constant evaluation for all non-type template arguments 
 [N4268](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4268.html) 
