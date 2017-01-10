@@ -693,6 +693,14 @@ More background in the original paper: [PDF: N4152](http://www.open-std.org/jtc1
 
 The function returns the number of uncaught exception objects in the current thread.
 
+This might be useful when implementing proper Scope Guards that works also during stack unwinding.
+
+> A type that wants to know whether its destructor is being run to unwind this object can query uncaught_exceptions
+in its constructor and store the result, then query uncaught_exceptions again in its destructor; if the result is different, 
+then this destructor is being invoked as part of stack unwinding due to a new exception that was thrown later than the object’s construction
+
+The above quote comes from [PDF: N4152](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4152).
+
 ###`constexpr` if-statements  
 
 [P0292R2](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0292r2.html) 
