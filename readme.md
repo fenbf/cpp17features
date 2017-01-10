@@ -642,8 +642,31 @@ else
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-Previously only methods/functions could be specified as `inline`; now you can do the same with variables.
+Previously only methods/functions could be specified as `inline`, now you can do the same with variables, inside a header file.
 
+> A variable declared inline has the same semantics as a function declared inline: it can be defined, identically, in multiple translation units, must be defined in every translation unit in which it is used, and the behavior of the program is as if there is exactly one variable.
+
+```cpp
+struct MyClass
+{
+    static const int sValue;
+};
+
+inline int const MyClass::sValue = 777;
+```
+
+Or even:
+
+```cpp
+struct MyClass
+{
+    inline static const int sValue = 777;
+};
+```
+
+Articles
+
+* [SO: What is an inline variable and what is it useful for?](http://stackoverflow.com/questions/38043442/what-is-an-inline-variable-and-what-is-it-useful-for)
 
 ###DR: Matching of template template-arguments excludes compatible templates 
 
