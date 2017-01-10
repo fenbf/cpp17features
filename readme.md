@@ -140,6 +140,7 @@ The compiler will report errors if character cannot fit inside `u8` ASCII range.
 Reference:
 
 * [cppreference.com/character literal](http://en.cppreference.com/w/cpp/language/character_literal)
+* [SO: What is the point of the UTF-8 character literals proposed for C++17?](http://stackoverflow.com/questions/31970111/what-is-the-point-of-the-utf-8-character-literals-proposed-for-c17)
 
 ###Allow constant evaluation for all non-type template arguments 
 [N4268](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4268.html) 
