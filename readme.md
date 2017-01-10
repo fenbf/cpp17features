@@ -680,7 +680,28 @@ Articles
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+This feature resolves [Core issue CWG 150](http://open-std.org/JTC1/SC22/WG21/docs/papers/2015/n4457.html#150).
+
+From the paper:
+
+> This paper allows a template template-parameter to bind to a template argument whenever the template parameter is at least as specialized as the template argument. This implies that any template argument list that can legitimately be applied to the template template-parameter is also applicable to the argument template.
+
+Example:
+
+```cpp
+template <template <int> class> void FI();
+template <template <auto> class> void FA();
+template <auto> struct SA { /* ... */ };
+template <int> struct SI { /* ... */ };
+FI<SA>();  // OK; error before this paper
+FA<SI>();  // error
+
+template <template <typename> class> void FD();
+template <typename, typename = int> struct SD { /* ... */ };
+FD<SD>();  // OK; error before this paper (CWG 150)
+```
+
+(Some useful example needed, since it's a bit vague to me).
 
 ###[std::uncaught_exceptions()](http://en.cppreference.com/w/cpp/error/uncaught_exception) 
 
