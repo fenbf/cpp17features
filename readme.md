@@ -262,7 +262,26 @@ Capturing by value might be especially important for async invocation, paraller 
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+Other name for this feature was "Using non-standard attributes" in [P0028R3](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0028r3.html) and [PDF: P0028R2](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0028r2.pdf) (rationale, examples).
+
+Simplifies the case where you want to use multiple attributes, like:
+
+```cpp
+void f() {
+    [[rpr::kernel, rpr::target(cpu,gpu)]] // repetition
+    do-task();
+}
+```
+Proposed change:
+
+```cpp
+void f() {
+    [[using rpr: kernel, target(cpu,gpu)]]
+    do-task();
+}
+```
+
+That simplification might help when building tools that automatically translate annotated such code into a different programming models.
 
 ###Dynamic memory allocation for over-aligned data 
 [P0035R4](http://wg21.link/p0035r4)
