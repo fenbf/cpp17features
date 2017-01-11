@@ -17,6 +17,8 @@ The list comes from the following resources:
 * [AnthonyCalandra/modern-cpp-features cheat sheet](https://github.com/AnthonyCalandra/modern-cpp-features) - unfortunately it doesn't include all the features of C++17, so this is also why I've started a separate try on that.
 * plus other findings and mentions
 
+And onf of the most important resource: [Working Draft, Standard for Programming Language C++](http://open-std.org/JTC1/SC22/WG21/docs/papers/2016/n4618.pdf)
+
 ##Language Features
 
 ###New auto rules for direct-list-initialization 
