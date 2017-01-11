@@ -557,7 +557,7 @@ void foo();
 
 [P0195R2](http://wg21.link/p0195r2) 
 
-| GCC: not yet | Clang: 4.0 | MSVC: not yet |
+| GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
 |---------:|------------|------------|
 
 Allows you to inject names with *using-declarations* from all types in a parameter pack.
@@ -586,6 +586,10 @@ struct Overloader : Ts... {
     // […]
 };
 ```
+
+Remarks
+
+* Implemented in GCC 7.0, see [this change](https://github.com/gcc-mirror/gcc/commit/caba101ff33a763b444090b9c073bd84972ee552).
 
 ### Decomposition declarations
 
