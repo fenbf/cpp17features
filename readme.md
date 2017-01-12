@@ -833,6 +833,10 @@ We get the following items:
 
 The wording from those components comes from Library Fundamentals V2 to ensure the wording includes the latest corrections.
 
+Resources:
+
+* [Marco Arena, string_view odi et amo](https://marcoarena.wordpress.com/2017/01/03/string_view-odi-et-amo/)
+
 ###Merged: The Parallelism TS, a.k.a. “Parallel STL.”, 
 
 [P0024R2](http://isocpp.org/files/papers/P0024R2.html)
