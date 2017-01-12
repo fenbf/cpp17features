@@ -810,13 +810,32 @@ Articles:
 
 ##Library Features
 
+###Merged: The Library Fundamentals 1 TS (most parts)
+
+[P0220R1](https://isocpp.org/files/papers/p0220r1.html)
+ 
+We get the following items:
+
+* Tuples - [Calling a function with a tuple of arguments](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#tuple.apply)
+* Functional Objects - [Searchers](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#func.searchers)
+* [Optional objects](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#optional)
+* [Class any](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#any)
+* [string_view](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#string.view)
+* Memory:
+ * [Shared-ownership   pointers](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#memory.smartptr)
+ * [Class   memory_resource](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#memory.resource)
+ * [Class   memory_resource](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#memory.resource)
+ * [Access   to program-wide memory_resource objects](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#memory.resource.global)
+ * [Pool   resource classes](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#memory.resource.pool)
+ * [Class   monotonic_buffer_resource](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#memory.resource.monotonic.buffer)
+ * [Alias   templates using polymorphic memory resources](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#memory.resource.aliases)
+* Algorithms: 
+
+The wording from those components comes from Library Fundamentals V2 to ensure the wording includes the latest corrections.
+
 ###Merged: The Parallelism TS, a.k.a. “Parallel STL.”, 
 
 [P0024R2](http://isocpp.org/files/papers/P0024R2.html)
-
-###Merged: The Library Fundamentals 1 TS (most parts)
-
- [P0220R1](https://isocpp.org/files/papers/p0220r1.html)
 
 ###Merged: File System TS, 
 
@@ -834,3 +853,14 @@ Articles:
 
 [N4508](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4508.html)
 
+###Variant 
+
+[P0088R2](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0088r2.html)
+
+###Splicing Maps and Sets
+
+[P0083R2](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0083r2.pdf)
+
+From Herb Sutter, [Oulu trip report](https://herbsutter.com/2016/06/30/trip-report-summer-iso-c-standards-meeting-oulu/):
+
+> You will now be able to directly move internal nodes from one node-based container directly into another container of the same type. Why is that important? Because it guarantees no memory allocation overhead, no copying of keys or values, and even no exceptions if the container’s comparison function doesn’t throw.
