@@ -825,6 +825,14 @@ Articles:
 
 ##Library Features
 
+To get more details about library implementation I suggest those links:
+
+* [VS 2015 Update 2’s STL is C++17-so-far Feature Complete](https://blogs.msdn.microsoft.com/vcblog/2016/01/22/vs-2015-update-2s-stl-is-c17-so-far-feature-complete/) - Jan 2016
+* [libstdc++, C++ 201z status](https://gcc.gnu.org/onlinedocs/libstdc++/manual/status.html#status.iso.201z)
+* [libc++ C++1z Status](http://libcxx.llvm.org/cxx1z_status.html)
+
+This section only mentions some of the most important parts of library changes, it would be too impractical to go into details of every little change.
+
 ###Merged: The Library Fundamentals 1 TS (most parts)
 
 [P0220R1](https://isocpp.org/files/papers/p0220r1.html)
