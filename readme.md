@@ -327,7 +327,22 @@ todo...
 | GCC: 5.0 | Clang: yes | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+This feature allows a C++ program to directly, reliably and portably determine whether or not a library header is available for inclusion.
+
+Example: This demonstrates a way to use a library optional facility only if it is available.
+
+```cpp
+#if __has_include(<optional>)
+#  include <optional>
+#  define have_optional 1
+#elif __has_include(<experimental/optional>)
+#  include <experimental/optional>
+#  define have_optional 1
+#  define experimental_optional 1
+#else
+#  define have_optional 0
+#endif
+```
 
 ###Template argument deduction for class templates 
 [P0091R3](http://wg21.link/p0091r3)
