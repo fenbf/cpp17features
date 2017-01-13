@@ -853,6 +853,8 @@ We get the following items:
  * [Class   monotonic_buffer_resource](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#memory.resource.monotonic.buffer)
  * [Alias   templates using polymorphic memory resources](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#memory.resource.aliases)
 * Algorithms: 
+ * [Search](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#alg.search)
+ * [Sampling](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#alg.random.sample)
 
 The wording from those components comes from Library Fundamentals V2 to ensure the wording includes the latest corrections.
 
