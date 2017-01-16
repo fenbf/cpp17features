@@ -886,6 +886,11 @@ Resources:
 
 [P0088R2](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0088r2.html)
 
+Variant is a typesafe union that will report errors when you want to access something that's not currently inside the object.
+
+* [cppreference/variant](http://en.cppreference.com/w/cpp/utility/variant)
+* [IsoCpp: The Variant Saga: A happy ending?](https://isocpp.org/blog/2015/11/the-variant-saga-a-happy-ending)
+
 ###Splicing Maps and Sets
 
 [P0083R2](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0083r2.pdf)
