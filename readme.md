@@ -451,6 +451,10 @@ Summary of changes:
 * Assignment expressions are evaluated from right to left. This includes compound assignments.
 * Operands to shift operators are evaluated from left to right.
 
+Reference:
+
+* [C++ Order of evaluation, cppreference](http://en.cppreference.com/w/cpp/language/eval_order)
+
 ###constexpr lambda expressions 
 [P0170R1](http://wg21.link/p0170r1)
 
