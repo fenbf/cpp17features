@@ -454,6 +454,7 @@ Summary of changes:
 Reference:
 
 * [C++ Order of evaluation, cppreference](http://en.cppreference.com/w/cpp/language/eval_order)
+* [SO: What are the evaluation order guarantees introduced by C++17?](http://stackoverflow.com/questions/38501587/what-are-the-evaluation-order-guarantees-introduced-by-c17)
 
 ###constexpr lambda expressions 
 [P0170R1](http://wg21.link/p0170r1)
