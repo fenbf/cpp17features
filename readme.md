@@ -433,7 +433,23 @@ Allows to create 'strong types' that are easy to use...
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+In a nutshell, given an expression such as `f(a, b, c)`, the order in which the sub-expressions f, a, b, c (which are of arbitrary shapes) are evaluated is left unspecified by the standard.
+
+```cpp
+// unspecified behaviour below!
+f(i++, i);
+
+v[i] = i++; 
+
+std::map<int, int> m;
+m[0] = m.size(); // {{0, 0}} or {{0, 1}} ?
+```
+
+Summary of changes:
+
+* Postfix  expressions  are  evaluated  from  left  to  right. This  includes  functions  calls  and  member selection expressions.
+* Assignment expressions are evaluated from right to left. This includes compound assignments.
+* Operands to shift operators are evaluated from left to right.
 
 ###constexpr lambda expressions 
 [P0170R1](http://wg21.link/p0170r1)
