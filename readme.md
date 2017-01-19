@@ -702,6 +702,10 @@ else
 `val` is visible only inside the `if` and `else` statements, so it doesn't 'leak'.
 `condition` might be any condition, not only if `val` is true/false.
 
+Examples:
+
+* [C++ Weekly - Ep 21 C++17's `if` and `switch` Init Statements](https://www.youtube.com/watch?v=AiXU5EuLZgc&feature=youtu.be)
+
 ###Inline variables 
 
 [P0386R2](http://wg21.link/p0386r2)
