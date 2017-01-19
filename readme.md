@@ -171,7 +171,7 @@ Articles:
 | GCC: 7.0 | Clang: 3.8 | MSVC: not yet |
 |---------:|------------|------------|
 
-The `register` keyword was deprecated in the 2011 C++ standard. C++17 tries to clear the standard, so the keyword is now removed.
+The `register` keyword was deprecated in the 2011 C++ standard. C++17 tries to clear the standard, so the keyword is now removed. This keyword is reserved now and might be repurposed in the future revisions. 
 
 ###Remove Deprecated operator++(bool) 
 [P0002R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0002r1.html)
