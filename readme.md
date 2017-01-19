@@ -679,13 +679,11 @@ New versions of the if and switch statements for C++: `if (init; condition)` and
 This should simplify the code. For example, previously you had to write:
 
 ```cpp
-{   
-    auto val = GetValue();   
-    if (val)    
-        // on success  
-    else   
-        // on false... 
-}
+int val = GetValue();
+if (val != 42)
+    // on success
+else
+    // on false...
 ```
 
 Look, that `val` has a separate scope, without it it will 'leak'.
@@ -693,10 +691,10 @@ Look, that `val` has a separate scope, without it it will 'leak'.
 Now you can write:
 
 ```cpp 
-if (auto val = GetValue(); val)    
-    // on success  
-else   
-    // on false... 
+if (int val = GetValue(); val != 42)
+    // on success
+else
+    // on false...
 ```
 
 `val` is visible only inside the `if` and `else` statements, so it doesn't 'leak'.
