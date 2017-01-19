@@ -632,7 +632,7 @@ Remarks
 
 * Implemented in GCC 7.0, see [this change](https://github.com/gcc-mirror/gcc/commit/caba101ff33a763b444090b9c073bd84972ee552).
 
-### Decomposition declarations
+###Decomposition declarations
 
 [P0217R3](http://wg21.link/p0217r3)
 
@@ -770,7 +770,23 @@ template <typename, typename = int> struct SD { /* ... */ };
 FD<SD>();  // OK; error before this paper (CWG 150)
 ```
 
-(Some useful example needed, since it's a bit vague to me).
+(Adapted from the [comment](https://www.reddit.com/r/cpp/comments/5osck2/c_17_features/dcm7eq4/) by [IncongruentModulo1](https://www.reddit.com/user/IncongruentModulo1)) For a useful example, consider something like this:
+
+```cpp
+template <template <typename> typename Container>
+struct A
+{
+    Container<int>    m_ints;
+    Container<double> m_doubles;
+};
+```
+
+In C++14 and earlier, `A<std::vector>` wouldn't be valid (ignoring the typename and not class before container) since `std::vector` is declared as:
+
+`template <typename T, typename Allocator = std::allocator<T>>
+class vector;`
+
+This change resolves that issue. Before, you would need to declare template `<template <typename...> typename Container>`, which is more permissive and moves the error to a less explicit line (namely the declaration of `m_ints` wherever the `struct A` is implemented / declared, instead of where the struct is instantiated with the wrong template type.
 
 ###[std::uncaught_exceptions()](http://en.cppreference.com/w/cpp/error/uncaught_exception) 
 
