@@ -681,7 +681,7 @@ This should simplify the code. For example, previously you had to write:
 ```cpp
 {   
     auto val = GetValue();   
-    if (val)    
+    if (condition(val))    
         // on success  
     else   
         // on false... 
@@ -693,13 +693,14 @@ Look, that `val` has a separate scope, without it it will 'leak'.
 Now you can write:
 
 ```cpp 
-if (auto val = GetValue(); val)    
+if (auto val = GetValue(); condition(val))    
     // on success  
 else   
     // on false... 
 ```
 
 `val` is visible only inside the `if` and `else` statements, so it doesn't 'leak'.
+`condition` might be any condition, not only if `val` is true/false.
 
 ###Inline variables 
 
