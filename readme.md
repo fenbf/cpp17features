@@ -201,8 +201,11 @@ Previously exception specifications for a function didn't belong to the type of 
 We'll get an error in the case:
 
 ```cpp
-void (*p)() throw(int);
+void (*p)();
 void (**pp)() noexcept = &p;   // error: cannot convert to pointer to noexcept function
+
+struct S { typedef void (*p)(); operator p(); };
+void (*q)() noexcept = S();   // error: cannot convert to pointer to noexcept function
 ```
 
 ###Aggregate initialization of classes with base classes 
