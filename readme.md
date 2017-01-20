@@ -160,10 +160,22 @@ todo...
 
 More background here in [P0036](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0036r0.pdf)
 
+Allows to write compact code with variadic templates without using explicit recursion.
+
+Example:
+
+```cpp
+template<typename... Args>
+auto SumWithOne(Args... args){
+    return (1 + ... + args);
+}
+```
+
 Articles:
 
 * [C++ Truths: Folding Monadic Functions](http://cpptruths.blogspot.com/2017/01/folding-monadic-functions.html)
 * [Simon Brand: Exploding tuples with fold expressions](https://tartanllama.github.io/c++/2016/11/10/exploding-tuples-fold-expressions/)
+* [Baptiste Wicht: C++17 Fold Expressions](http://baptiste-wicht.com/posts/2015/05/cpp17-fold-expressions.html)
 
 ###Remove Deprecated Use of the register Keyword 
 [P0001R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0001r1.html)
