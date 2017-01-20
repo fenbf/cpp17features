@@ -177,6 +177,22 @@ Articles:
 * [Simon Brand: Exploding tuples with fold expressions](https://tartanllama.github.io/c++/2016/11/10/exploding-tuples-fold-expressions/)
 * [Baptiste Wicht: C++17 Fold Expressions](http://baptiste-wicht.com/posts/2015/05/cpp17-fold-expressions.html)
 
+###Unary fold expressions and empty parameter packs 
+[P0036R0](http://wg21.link/p0036r0) 
+
+| GCC: 6.0 | Clang: 3.9 | MSVC: not yet |
+|---------:|------------|------------|
+
+If the parameter pack is empty then the value of the fold is:
+
+| Operator | Value |
+|---------:|------------|
+| &&	| true |
+| \|\|	| false |
+| ,	| void() |
+
+For any operator not listed above, an unary fold expression with an empty parameter pack is ill-formed.
+
 ###Remove Deprecated Use of the register Keyword 
 [P0001R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0001r1.html)
 
@@ -327,14 +343,6 @@ void operator delete[](void*, std::align_val_t);
 void operator delete(void*, std::size_t, std::align_val_t);
 void operator delete[](void*, std::size_t, std::align_val_t);
 ```
-
-###Unary fold expressions and empty parameter packs 
-[P0036R0](http://wg21.link/p0036r0) 
-
-| GCC: 6.0 | Clang: 3.9 | MSVC: not yet |
-|---------:|------------|------------|
-
-todo...
 
 ###[__has_include](http://en.cppreference.com/w/cpp/preprocessor/include) in preprocessor conditionals 
 [P0061R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0061r1.html)
