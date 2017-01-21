@@ -415,7 +415,14 @@ todo: deduction guides.
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+Automatically deduce type on non-type template parameters.
+
+```cpp
+template <auto value> void f() { }
+f<10>();               // deduces int
+```
+
+[Trip report: Summer ISO C++ standards meeting (Oulu) | Sutter’s Mill](https://herbsutter.com/2016/06/30/trip-report-summer-iso-c-standards-meeting-oulu/)
 
 ###Guaranteed copy elision 
 [P0135R1](http://wg21.link/p0135r1)
