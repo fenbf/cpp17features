@@ -486,10 +486,25 @@ Reference:
 | GCC: 7.0 | Clang: not yet | MSVC: not yet |
 |---------:|------------|------------|
 
+consexpr can be used in the context of lambdas.
 
-todo...
+```cpp
+constexpr auto ID = [] (int n)  { return n; };
+constexpr int I = ID(3);
+static_assert(I == 3);
 
-[A 5 min episode of Jason Turner's C++ Weekly about constexpr lambdas](https://www.youtube.com/watch?v=kmza9U_niq4)
+constexpr int AddEleven(int n) {
+  // Initialization of the 'data member' for n can
+  // occur within a constant expression since 'n' is
+  // of literal type.
+  return [n] { return n + 11; }();
+}
+static_assert(AddEleven(5) == 16);
+```
+
+Articles
+* [A 5 min episode of Jason Turner's C++ Weekly about constexpr lambdas](https://www.youtube.com/watch?v=kmza9U_niq4)
+* [Lambda expression comparison between C++11, C++14 and C++17](https://maitesin.github.io/Lambda_comparison/)
 
 ###Differing begin and end types in range-based for 
 [P0184R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0184r0.html) 
