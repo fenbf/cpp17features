@@ -150,7 +150,18 @@ Reference:
 | GCC: 6.0 | Clang: 3.6 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+Remove syntactic restrictions for pointers, references, and pointers to members that appears as non-type template parameters:
+
+For instance:
+
+```cpp
+template<int *p> struct A {};
+int n;
+A<&n> a; // ok
+
+constexpr int *p() { return &n; }
+A<p()> b; // error before C++17
+```
 
 ###[Fold Expressions](http://en.cppreference.com/w/cpp/language/fold) 
 [N4295](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4295.html)
