@@ -17,7 +17,7 @@ The list comes from the following resources:
 * [AnthonyCalandra/modern-cpp-features cheat sheet](https://github.com/AnthonyCalandra/modern-cpp-features) - unfortunately it doesn't include all the features of C++17, so this is also why I've started a separate try on that.
 * plus other findings and mentions
 
-And onf of the most important resource: [Working Draft, Standard for Programming Language C++](http://open-std.org/JTC1/SC22/WG21/docs/papers/2016/n4618.pdf)
+And one of the most important resource: [Working Draft, Standard for Programming Language C++](http://open-std.org/JTC1/SC22/WG21/docs/papers/2016/n4618.pdf)
 
 ##Language Features
 
@@ -452,7 +452,7 @@ Articles:
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-More description and reasoning in [P0136R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0136r0.html).
+More description and reasoning in [P0136R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0136r0.html). Some excerpts below:
 
 An inheriting constructor does not act like any other form of using-declaration. All other using-declarations make some set of declarations visible to name lookup in another context, but an inheriting constructor declaration declares a new constructor  that merely delegates to the original.
 
