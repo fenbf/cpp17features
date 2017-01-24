@@ -452,7 +452,46 @@ Articles:
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-todo...
+More description and reasoning in [P0136R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0136r0.html).
+
+An inheriting constructor does not act like any other form of using-declaration. All other using-declarations make some set of declarations visible to name lookup in another context, but an inheriting constructor declaration declares a new constructor  that merely delegates to the original.
+
+This feature changes inheriting constructor declaration from declaring a set of new constructors, to making a set of base class constructors visible in a derived class as if they were derived class constructors. (When such a constructor is used, the additional derived class subobjects will also be implicitly constructed as if by a defaulted default constructor). Put another way: make inheriting a constructor act just like inheriting any other base class member, to the extent possible.
+
+This change does affect the meaning and validity of some programs, but these changes improve the consistency and comprehensibility of C++. 
+
+```cpp
+// Hiding works the same as for other member 
+// using-declarations in the presence of default arguments 
+struct A {
+  A(int a, int b = 0);
+  void f(int a, int b = 0);
+};
+struct B : A {
+  B(int a);      using A::A;
+  void f(int a); using A::f;
+};
+struct C : A {
+  C(int a, int b = 0);      using A::A;
+  void f(int a, int b = 0); using A::f;
+};
+
+B b(0); // was ok, now ambiguous
+b.f(0); // ambiguous (unchanged)
+
+C c(0); // was ambiguous, now ok
+c.f(0); // ok (unchanged)
+
+```
+
+```cpp
+// Inheriting constructor parameters are no longer copied
+struct A { A(const A&) = delete; A(int); };
+struct B { B(A); void f(A); };
+struct C : B { using B::B; using B::f; };
+C c({0}); // was ill-formed, now ok (no copy made)
+c.f({0}); // ok (unchanged)
+```
 
 ###Direct-list-initialization of enumerations 
 [P0138R2](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0138r2.pdf)
