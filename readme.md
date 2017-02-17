@@ -187,6 +187,7 @@ Articles:
 * [C++ Truths: Folding Monadic Functions](http://cpptruths.blogspot.com/2017/01/folding-monadic-functions.html)
 * [Simon Brand: Exploding tuples with fold expressions](https://tartanllama.github.io/c++/2016/11/10/exploding-tuples-fold-expressions/)
 * [Baptiste Wicht: C++17 Fold Expressions](http://baptiste-wicht.com/posts/2015/05/cpp17-fold-expressions.html)
+* [Fold Expressions - ModernesCpp.com](http://www.modernescpp.com/index.php/fold-expressions)
 
 ###Unary fold expressions and empty parameter packs 
 [P0036R0](http://wg21.link/p0036r0) 
@@ -278,7 +279,7 @@ To sum up: from the standard:
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
 |---------:|------------|------------|
 
-`this` pointer is implicitly captured by lambdas inside member functions. Member variables are always accessed by this pointer.
+`this` pointer is implicitly captured by lambdas inside member functions (if you use a default capture, like `[&]` or `[=]`). Member variables are always accessed by this pointer.
 
 Example:
 ```cpp
@@ -393,7 +394,7 @@ void f(std::pair<int, char>);
 f(std::make_pair(42, 'z'));
 ```
 
-because `std::make_pair` is a _template function_.
+because `std::make_pair` is a _template function_ (so we can perform teplate deduction).
 But the following wasn't:
 
 ```cpp
@@ -402,7 +403,7 @@ void f(std::pair<int, char>);
 f(std::pair(42, 'z'));
 ```
 
-although it is semantically equivalent. This was not legal because `std::pair` is a _template class_, and template classes could not apply type deduction in their initialization.
+Although it is semantically equivalent. This was not legal because `std::pair` is a _template class_, and template classes could not apply type deduction in their initialization.
 
 So before C++17 one has to write out the types explicitly, even though this does not add any new information:
 
