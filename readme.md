@@ -4,7 +4,7 @@ This file is published as [bfilipek.com/C++17 features](http://www.bfilipek.com/
 
 ##Intro
 
-**Work in Progress!** I am happy to see your help with the list! :)
+The list is mostly done! Still some descriptions could be improved or more example could be provided.
 
 If you have code examples, better explanations or any ideas, let me know! I am happy to update the current post so that it has some real value for others.
 
