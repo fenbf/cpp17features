@@ -1004,6 +1004,10 @@ Resources:
 
 [P0024R2](http://isocpp.org/files/papers/P0024R2.html)
 
+Articles:
+
+* [Parallel Algorithm of the Standard Template Library - ModernesCpp.com](http://www.modernescpp.com/index.php/parallel-algorithm-of-the-standard-template-library)
+
 ###Merged: File System TS, 
 
 [P0218R1](https://isocpp.org/files/papers/P0218r1.html)
