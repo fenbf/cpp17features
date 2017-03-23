@@ -1000,6 +1000,15 @@ Resources:
 
 * [Marco Arena, string_view odi et amo](https://marcoarena.wordpress.com/2017/01/03/string_view-odi-et-amo/)
 
+###Removal of some deprecated types and functions, including std::auto_ptr, std::random_shuffle, and old function adaptors
+
+[N4190](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0001r1.html)
+
+* Function objects - unary_function/binary_function, ptr_fun(), and mem_fun()/mem_fun_ref()
+* Binders - bind1st()/bind2nd()
+* auto_ptr
+* Random shuffle - random_shuffle(first, last) and random_shuffle(first, last, rng)
+
 ###Merged: The Parallelism TS, a.k.a. “Parallel STL.”, 
 
 [P0024R2](http://isocpp.org/files/papers/P0024R2.html)
