@@ -564,7 +564,7 @@ Articles
 * [A 5 min episode of Jason Turner's C++ Weekly about constexpr lambdas](https://www.youtube.com/watch?v=kmza9U_niq4)
 * [Lambda expression comparison between C++11, C++14 and C++17](https://maitesin.github.io/Lambda_comparison/)
 
-###Differing begin and end types in range-based for 
+###Different begin and end types in range-based for 
 [P0184R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0184r0.html) 
 
 | GCC: 6.0 | Clang: 3.6 | MSVC: 15.0 Preview 5 |
