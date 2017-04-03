@@ -19,6 +19,8 @@ The list comes from the following resources:
 
 And one of the most important resource: [Working Draft, Standard for Programming Language C++](http://open-std.org/JTC1/SC22/WG21/docs/papers/2016/n4618.pdf)
 
+Plus there's an official list of changes: [P0636r0: Changes between C++14 and C++17 DIS](https://isocpp.org/files/papers/p0636r0.html)
+
 ##Language Features
 
 ###New auto rules for direct-list-initialization 
