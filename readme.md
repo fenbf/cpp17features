@@ -538,6 +538,7 @@ Reference:
 
 * [C++ Order of evaluation, cppreference](http://en.cppreference.com/w/cpp/language/eval_order)
 * [SO: What are the evaluation order guarantees introduced by C++17?](http://stackoverflow.com/questions/38501587/what-are-the-evaluation-order-guarantees-introduced-by-c17)
+* [How compact code can become buggy code: getting caught by the order of evaluations, Fluent C++](http://www.fluentcpp.com/2017/05/09/compact-code-becomes-buggy-code-order-evaluations/)
 
 ###constexpr lambda expressions 
 [P0170R1](http://wg21.link/p0170r1)
