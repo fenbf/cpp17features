@@ -996,6 +996,7 @@ We get the following items:
 * Algorithms: 
  * [Search](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#alg.search)
  * [Sampling](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4562.html#alg.random.sample)
+* `shared_ptr` natively handles arrays: see [Merging shared_ptr changes from Library Fundamentals to C++17](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0414r2.html)
 
 The wording from those components comes from Library Fundamentals V2 to ensure the wording includes the latest corrections.
 
