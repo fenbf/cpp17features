@@ -21,6 +21,16 @@ And one of the most important resource: [Working Draft, Standard for Programming
 
 Plus there's an official list of changes: [P0636r0: Changes between C++14 and C++17 DIS](https://isocpp.org/files/papers/p0636r0.html)
 
+I am also working on a bit detailed series:
+
+1. [Fixes and deprecation](http://www.bfilipek.com/2017/05/cpp17-details-fixes-deprecation.html)
+2. [Language clarification](http://www.bfilipek.com/2017/06/cpp17-details-clarifications.html)
+3. Templates (soon)
+4. Attributes (soon)
+5. Simplification (soon)
+6. Library changes 1 (soon)
+7. Library changes 2 (soon)
+
 ##Language Features
 
 ###New auto rules for direct-list-initialization 
@@ -420,8 +430,8 @@ This is fixed in C++17 where template class constructors can deduce type paramet
 todo: deduction guides.
 
 - [A 4 min episode of C++ Weekly on class template argument type deduction](https://www.youtube.com/watch?v=dEBQL4KPSk8)
-
 - [A 4 min episode of C++ Weekly on deduction guides](https://www.youtube.com/watch?v=-3fVp0U4xi0)
+- [Modern C++ Features - Class Template Argument Deduction -](https://arne-mertz.de/2017/06/class-template-argument-deduction/)
 
 ###Non-type template parameters with auto type 
 [P0127R2](http://wg21.link/p0127r2)
