@@ -574,6 +574,7 @@ static_assert(AddEleven(5) == 16);
 ```
 
 Articles
+
 * [A 5 min episode of Jason Turner's C++ Weekly about constexpr lambdas](https://www.youtube.com/watch?v=kmza9U_niq4)
 * [Lambda expression comparison between C++11, C++14 and C++17](https://maitesin.github.io/Lambda_comparison/)
 
