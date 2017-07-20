@@ -752,6 +752,9 @@ Helps when using tuples as a return type. It will automatically create variables
 For example:
 
 ```cpp
+int a = 0;
+double b = 0.0;
+long c = 0;
 std::tie(a, b, c) = tuple; // a, b, c need to be declared first
 ```
 
