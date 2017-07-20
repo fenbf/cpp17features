@@ -739,14 +739,15 @@ Remarks
 
 * Implemented in GCC 7.0, see [this change](https://github.com/gcc-mirror/gcc/commit/caba101ff33a763b444090b9c073bd84972ee552).
 
-###Decomposition declarations
+### Structured Bindind Declarations
 
 [P0217R3](http://wg21.link/p0217r3)
+[P0615R0: Renaming for structured bindings](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0615r0.html)
 
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
 |---------:|------------|------------|
 
-Helps when using tuples as a return type. It will automatically create variables and `tie` them. More details in [P0144R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0144r0.pdf). Was originally called "structured bindings".
+Helps when using tuples as a return type. It will automatically create variables and `tie` them. More details in [P0144R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0144r0.pdf). The name "Decomposition Declaration" was also used, but finally the standard agrees to use "Structured Binding Declarations" (section 11.5)
 
 For example:
 
