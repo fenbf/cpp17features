@@ -1032,13 +1032,50 @@ Resources:
 
 [P0024R2](http://isocpp.org/files/papers/P0024R2.html)
 
+Parralel versions/overloads of most of std algorithms. Plus a few new algorithms, like reduce, transform_reduce, for_each.
+
+```cpp
+std::vector<int> v = genLargeVector();
+
+// standard sequential sort
+std::sort(v.begin(), v.end());
+
+// explicitly sequential sort
+std::sort(std::seq, v.begin(), v.end());
+
+// permitting parallel execution
+std::sort(std::par, v.begin(), v.end());
+
+// permitting vectorization as well
+std::sort(std::par_unseq, v.begin(), v.end());
+```
+
 Articles:
 
+* [Bartek's coding blog: C++17 in details: Parallel Algorithms](http://www.bfilipek.com/2017/08/cpp17-details-parallel.html)
 * [Parallel Algorithm of the Standard Template Library - ModernesCpp.com](http://www.modernescpp.com/index.php/parallel-algorithm-of-the-standard-template-library)
 
 ###Merged: File System TS, 
 
 [P0218R1](https://isocpp.org/files/papers/P0218r1.html)
+
+```cpp
+namespace fs = std::filesystem;
+
+fs::path pathToShow(/* ... */);
+cout << "exists() = " << fs::exists(pathToShow) << "\n"
+     << "root_name() = " << pathToShow.root_name() << "\n"
+     << "root_path() = " << pathToShow.root_path() << "\n"
+     << "relative_path() = " << pathToShow.relative_path() << "\n"
+     << "parent_path() = " << pathToShow.parent_path() << "\n"
+     << "filename() = " << pathToShow.filename() << "\n"
+     << "stem() = " << pathToShow.stem() << "\n"
+     << "extension() = " << pathToShow.extension() << "\n";
+```
+
+Articles:
+
+* [Bartek's coding blog: C++17 in details: Filesystem](http://www.bfilipek.com/2017/08/cpp17-details-filesystem.html)
 
 ###Merged: The Mathematical Special Functions IS, 
 
