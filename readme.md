@@ -2,7 +2,7 @@ TOC will be added in the final post, since github doesn't recognize [TOC] option
 
 This file is published as [bfilipek.com/C++17 features](http://www.bfilipek.com/2017/01/cpp17features.html) blog post.
 
-##Intro
+## Intro
 
 The list is mostly done! Still some descriptions could be improved or more example could be provided.
 
@@ -25,15 +25,17 @@ I am also working on a bit detailed series:
 
 1. [Fixes and deprecation](http://www.bfilipek.com/2017/05/cpp17-details-fixes-deprecation.html)
 2. [Language clarification](http://www.bfilipek.com/2017/06/cpp17-details-clarifications.html)
-3. Templates (soon)
-4. Attributes (soon)
-5. Simplification (soon)
-6. Library changes 1 (soon)
-7. Library changes 2 (soon)
+3. [Templates](http://www.bfilipek.com/2017/06/cpp17-details-templates.htm)
+4. [Attributes](http://www.bfilipek.com/2017/07/cpp17-in-details-attributes.html)
+5. [Simplification](http://www.bfilipek.com/2017/07/cpp17-details-simplifications.html)
+6. [Library changes - Filesystem](http://www.bfilipek.com/2017/08/cpp17-details-filesystem.html) 
+7. [Library changes - Parallel STL](http://www.bfilipek.com/2017/08/cpp17-details-parallel.html)
+8. Library changes - Utils (soon)
+9. Wrap up, Bonus (soon)
 
-##Language Features
+## Language Features
 
-###New auto rules for direct-list-initialization
+### New auto rules for direct-list-initialization
 [N3922](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3922.html)
 
 | GCC: 5.0 | Clang: 3.8 | MSVC: 14.0 |
@@ -57,7 +59,7 @@ And for the direct initialization, new rules are:
 
 Basically, `auto x { 1 };` will be now deduced as `int`, but before it was an initializer list.
 
-###static_assert with no message
+### static_assert with no message
 [N3928](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3928.pdf)
 
 | GCC: 6.0 | Clang: 2.5 | MSVC: 15.0 preview 5|
@@ -66,7 +68,7 @@ Basically, `auto x { 1 };` will be now deduced as `int`, but before it was an in
 Self-explanatory. It allows just to have the condition without passing the message, version with the message will also be available. It will be compatible with other asserts like `BOOST_STATIC_ASSERT` (that didn't take any message from the start).
 
 
-###typename in a template template parameter
+### typename in a template template parameter
 
 [N4051](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4051.html)
 
@@ -83,7 +85,7 @@ struct foo;
 foo<std::vector> my_foo;
 ```
 
-###Removing trigraphs
+### Removing trigraphs
 [N4086](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4086.html)
 
 | GCC: 5.1 | Clang: 3.5 | MSVC: Yes |
@@ -93,7 +95,7 @@ Removes `??=`, `??(`, `??>`, ...
 
 Makes the implementation a bit simpler, see [MSDN Trigraphs](https://msdn.microsoft.com/en-us/library/bt0y4awe.aspx)
 
-###Nested namespace definition
+### Nested namespace definition
 [N4230](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4230.html)
 
 | GCC: 6.0 | Clang: 3.6 | MSVC: 14.3 |
@@ -118,7 +120,7 @@ namespace A {
 }
 ```
 
-###Attributes for namespaces and enumerators
+### Attributes for namespaces and enumerators
 [N4266](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4266.html)
 
 | GCC: 4.9 (namespaces)/ 6 (enums) | Clang: 3.4 | MSVC: 14.0 |
@@ -141,7 +143,7 @@ namespace [[deprecated]] old_stuff{
 old_stuff::legacy(); // Emits warning
 ```
 
-###u8 character literals
+### u8 character literals
 [N4267](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4267.html)
 
 | GCC: 6.0 | Clang: 3.6 | MSVC: 14.0 |
@@ -156,7 +158,7 @@ Reference:
 * [cppreference.com/character literal](http://en.cppreference.com/w/cpp/language/character_literal)
 * [SO: What is the point of the UTF-8 character literals proposed for C++17?](http://stackoverflow.com/questions/31970111/what-is-the-point-of-the-utf-8-character-literals-proposed-for-c17)
 
-###Allow constant evaluation for all non-type template arguments
+### Allow constant evaluation for all non-type template arguments
 [N4268](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4268.html)
 
 | GCC: 6.0 | Clang: 3.6 | MSVC: not yet |
@@ -175,7 +177,8 @@ constexpr int *p() { return &n; }
 A<p()> b; // error before C++17
 ```
 
-###[Fold Expressions](http://en.cppreference.com/w/cpp/language/fold)
+### [Fold Expressions](http://en.cppreference.com/w/cpp/language/fold)
+
 [N4295](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4295.html)
 
 | GCC: 6.0 | Clang: 3.6 | MSVC: not yet |
@@ -201,7 +204,7 @@ Articles:
 * [Baptiste Wicht: C++17 Fold Expressions](http://baptiste-wicht.com/posts/2015/05/cpp17-fold-expressions.html)
 * [Fold Expressions - ModernesCpp.com](http://www.modernescpp.com/index.php/fold-expressions)
 
-###Unary fold expressions and empty parameter packs
+### Unary fold expressions and empty parameter packs
 [P0036R0](http://wg21.link/p0036r0)
 
 | GCC: 6.0 | Clang: 3.9 | MSVC: not yet |
@@ -217,7 +220,7 @@ If the parameter pack is empty then the value of the fold is:
 
 For any operator not listed above, an unary fold expression with an empty parameter pack is ill-formed.
 
-###Remove Deprecated Use of the register Keyword
+### Remove Deprecated Use of the register Keyword
 [P0001R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0001r1.html)
 
 | GCC: 7.0 | Clang: 3.8 | MSVC: 15.3 |
@@ -225,7 +228,7 @@ For any operator not listed above, an unary fold expression with an empty parame
 
 The `register` keyword was deprecated in the 2011 C++ standard. C++17 tries to clear the standard, so the keyword is now removed. This keyword is reserved now and might be repurposed in the future revisions.
 
-###Remove Deprecated operator++(bool)
+### Remove Deprecated operator++(bool)
 [P0002R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0002r1.html)
 
 | GCC: 7.0 | Clang: 3.8 | MSVC: 15.3 |
@@ -233,7 +236,7 @@ The `register` keyword was deprecated in the 2011 C++ standard. C++17 tries to c
 
 The ++ operator for `bool` was deprecated in the original 1998 C++ standard, and it is past time to remove it formally.
 
-###Removing Deprecated Exception Specifications from C++17
+### Removing Deprecated Exception Specifications from C++17
 [P0003R5](http://wg21.link/p0003r5)
 
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
@@ -241,7 +244,7 @@ The ++ operator for `bool` was deprecated in the original 1998 C++ standard, and
 
 Dynamic exception specifications were deprecated in C++11. This paper formally proposes removing the feature from C++17, while retaining the (still) deprecated `throw()` specification strictly as an alias for `noexcept(true)`.
 
-###Make exception specifications part of the type system
+### Make exception specifications part of the type system
 
 [P0012R1](http://wg21.link/p0012r1)
 
@@ -260,7 +263,7 @@ struct S { typedef void (*p)(); operator p(); };
 void (*q)() noexcept = S();   // error: cannot convert to pointer to noexcept function
 ```
 
-###Aggregate initialization of classes with base classes
+### Aggregate initialization of classes with base classes
 [P0017R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0017r1.html)
 
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
@@ -285,7 +288,7 @@ To sum up: from the standard:
 * no virtual functions (10.3), and
 * no virtual, private or protected base classes (10.1).
 
-###Lambda capture of *this
+### Lambda capture of *this
 [P0018R3](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0018r3.html)
 
 | GCC: 7.0 | Clang: 3.9 | MSVC: 15.3 |
@@ -313,7 +316,7 @@ Now you can use `*this` when declaring a lambda, for example `auto b = [=, *this
 
 Capturing by value might be especially important for async invocation, paraller processing.
 
-###Using attribute namespaces without repetition
+### Using attribute namespaces without repetition
 [P0028R4](http://wg21.link/p0028r4)
 
 | GCC: 7.0 | Clang: 3.9 | MSVC: 15.3 |
@@ -340,7 +343,7 @@ void f() {
 
 That simplification might help when building tools that automatically translate annotated such code into a different programming models.
 
-###Dynamic memory allocation for over-aligned data
+### Dynamic memory allocation for over-aligned data
 [P0035R4](http://wg21.link/p0035r4)
 
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
@@ -368,7 +371,8 @@ void operator delete(void*, std::size_t, std::align_val_t);
 void operator delete[](void*, std::size_t, std::align_val_t);
 ```
 
-###[__has_include](http://en.cppreference.com/w/cpp/preprocessor/include) in preprocessor conditionals
+### [__has_include](http://en.cppreference.com/w/cpp/preprocessor/include) in preprocessor conditionals
+
 [P0061R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0061r1.html)
 
 | GCC: 5.0 | Clang: yes | MSVC: 15.3 |
@@ -391,7 +395,8 @@ Example: This demonstrates a way to use a library optional facility only if it i
 #endif
 ```
 
-###Template argument deduction for class templates
+### Template argument deduction for class templates
+
 [P0091R3](http://wg21.link/p0091r3)
 
 | GCC: 7.0 | Clang: not yet | MSVC: not yet |
@@ -433,7 +438,8 @@ todo: deduction guides.
 - [A 4 min episode of C++ Weekly on deduction guides](https://www.youtube.com/watch?v=-3fVp0U4xi0)
 - [Modern C++ Features - Class Template Argument Deduction -](https://arne-mertz.de/2017/06/class-template-argument-deduction/)
 
-###Non-type template parameters with auto type
+### Non-type template parameters with auto type
+
 [P0127R2](http://wg21.link/p0127r2)
 
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
@@ -448,7 +454,8 @@ f<10>();               // deduces int
 
 [Trip report: Summer ISO C++ standards meeting (Oulu) | Sutter’s Mill](https://herbsutter.com/2016/06/30/trip-report-summer-iso-c-standards-meeting-oulu/)
 
-###Guaranteed copy elision
+### Guaranteed copy elision
+
 [P0135R1](http://wg21.link/p0135r1)
 
 
@@ -459,7 +466,8 @@ Articles:
 
 * [Jonas Devlieghere: Guaranteed Copy Elision](https://jonasdevlieghere.com/guaranteed-copy-elision/)
 
-###New specification for inheriting constructors (DR1941 et al)
+### New specification for inheriting constructors (DR1941 et al)
+
 [P0136R1](http://wg21.link/p0136r1)
 
 | GCC: 7.0 | Clang: 3.9 | MSVC: not yet |
@@ -506,7 +514,8 @@ C c({0}); // was ill-formed, now ok (no copy made)
 c.f({0}); // ok (unchanged)
 ```
 
-###Direct-list-initialization of enumerations
+### Direct-list-initialization of enumerations
+
 [P0138R2](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0138r2.pdf)
 
 | GCC: 7.0 | Clang: 3.9 | MSVC: 15.3 |
@@ -520,7 +529,8 @@ Handle h { 42 }; // OK
 ```
 Allows to create 'strong types' that are easy to use...
 
-###Stricter expression evaluation order
+### Stricter expression evaluation order
+
 [P0145R3](http://wg21.link/p0145r3)
 
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
@@ -550,7 +560,8 @@ Reference:
 * [SO: What are the evaluation order guarantees introduced by C++17?](http://stackoverflow.com/questions/38501587/what-are-the-evaluation-order-guarantees-introduced-by-c17)
 * [How compact code can become buggy code: getting caught by the order of evaluations, Fluent C++](http://www.fluentcpp.com/2017/05/09/compact-code-becomes-buggy-code-order-evaluations/)
 
-###constexpr lambda expressions
+### constexpr lambda expressions
+
 [P0170R1](http://wg21.link/p0170r1)
 
 
@@ -578,7 +589,8 @@ Articles
 * [A 5 min episode of Jason Turner's C++ Weekly about constexpr lambdas](https://www.youtube.com/watch?v=kmza9U_niq4)
 * [Lambda expression comparison between C++11, C++14 and C++17](https://maitesin.github.io/Lambda_comparison/)
 
-###Different begin and end types in range-based for
+### Different begin and end types in range-based for
+
 [P0184R0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0184r0.html)
 
 | GCC: 6.0 | Clang: 3.6 | MSVC: 15.0 Preview 5 |
@@ -615,7 +627,7 @@ Into:
 
 Types of `__begin` and `__end` might be different; only the comparison operator is required. This little change allows Range TS users a better experience.
 
-###[[fallthrough]] attribute
+### [[fallthrough]] attribute
 
 [P0188R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0188r1.pdf)
 
@@ -636,7 +648,7 @@ case 'c':
 }
 ```
 
-###[[nodiscard]] attribute
+### [[nodiscard]] attribute
 
 [P0189R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0189r1.pdf)
 
@@ -663,7 +675,7 @@ void oops() {
 ```
 [A 4 min video about [[nodiscard]] in Jason Turner's C++ Weekly](https://www.youtube.com/watch?v=l_5PF3GQLKc)
 
-###[[maybe_unused]] attribute
+### [[maybe_unused]] attribute
 
 [P0212R1](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0212r1.pdf)
 
@@ -686,7 +698,7 @@ void foo() {
 [A 3 min video about [[maybe_unused]] in Jason Turner's C++ Weekly](https://www.youtube.com/watch?v=WSPmNL9834U)
 
 
-###Ignore unknown attributes
+### Ignore unknown attributes
 
 [P0283R2](http://wg21.link/p0283r2)
 
@@ -701,7 +713,7 @@ Clarifies that implementations should ignore any attribute namespaces which they
 void foo();
 ```
 
-###Pack expansions in using-declarations
+### Pack expansions in using-declarations
 
 [P0195R2](http://wg21.link/p0195r2)
 
@@ -772,7 +784,7 @@ Articles:
 * [jrb-programming, Emulating C++17 Structured Bindings in C++14](http://jrb-programming.blogspot.fr/2016/02/emulating-c17-structured-binding-in-c14.html)
 * [Simon Brand, Adding C++17 decomposition declaration support to your classes](https://tartanllama.github.io/c++/2016/07/20/structured-bindings/)
 
-###Hexadecimal floating-point literals
+### Hexadecimal floating-point literals
 
 [P0245R1](http://wg21.link/p0245r1)
 
@@ -781,7 +793,7 @@ Articles:
 
 Allows to express some special floating point values, for example, the smallest normal IEEE-754 single precision value is readily written as `0x1.0p-126`.
 
-###init-statements for if and switch
+### init-statements for if and switch
 
 [P0305R1](http://wg21.link/p0305r1)
 
@@ -820,7 +832,7 @@ Examples:
 
 * [C++ Weekly - Ep 21 C++17's `if` and `switch` Init Statements](https://www.youtube.com/watch?v=AiXU5EuLZgc&feature=youtu.be)
 
-###Inline variables
+### Inline variables
 
 [P0386R2](http://wg21.link/p0386r2)
 
@@ -853,7 +865,7 @@ Articles
 
 * [SO: What is an inline variable and what is it useful for?](http://stackoverflow.com/questions/38043442/what-is-an-inline-variable-and-what-is-it-useful-for)
 
-###DR: Matching of template template-arguments excludes compatible templates
+### DR: Matching of template template-arguments excludes compatible templates
 
 [P0522R0](http://wg21.link/p0522r0)
 
@@ -899,7 +911,7 @@ class vector;`
 
 This change resolves that issue. Before, you would need to declare template `<template <typename...> typename Container>`, which is more permissive and moves the error to a less explicit line (namely the declaration of `m_ints` wherever the `struct A` is implemented / declared, instead of where the struct is instantiated with the wrong template type.
 
-###[std::uncaught_exceptions()](http://en.cppreference.com/w/cpp/error/uncaught_exception)
+### [std::uncaught_exceptions()](http://en.cppreference.com/w/cpp/error/uncaught_exception)
 
 [N4259](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4259)
 
@@ -918,7 +930,7 @@ then this destructor is being invoked as part of stack unwinding due to a new ex
 
 The above quote comes from [PDF: N4152](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4152).
 
-###`constexpr` if-statements
+### `constexpr` if-statements
 
 [P0292R2](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0292r2.html)
 
@@ -979,7 +991,7 @@ Articles:
 * [SO: constexpr if and static_assert](http://stackoverflow.com/questions/38304847/constexpr-if-and-static-assert)
 * [Simon Brand: Simplifying templates and #ifdefs with if constexpr](https://tartanllama.github.io/c++/2016/12/12/if-constexpr/)
 
-##Library Features
+## Library Features
 
 To get more details about library implementation I suggest those links:
 
@@ -989,7 +1001,7 @@ To get more details about library implementation I suggest those links:
 
 This section only mentions some of the most important parts of library changes, it would be too impractical to go into details of every little change.
 
-###Merged: The Library Fundamentals 1 TS (most parts)
+### Merged: The Library Fundamentals 1 TS (most parts)
 
 [P0220R1](https://isocpp.org/files/papers/p0220r1.html)
 
@@ -1019,7 +1031,7 @@ Resources:
 
 * [Marco Arena, string_view odi et amo](https://marcoarena.wordpress.com/2017/01/03/string_view-odi-et-amo/)
 
-###Removal of some deprecated types and functions, including std::auto_ptr, std::random_shuffle, and old function adaptors
+### Removal of some deprecated types and functions, including std::auto_ptr, std::random_shuffle, and old function adaptors
 
 [N4190](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0001r1.html)
 
@@ -1028,7 +1040,7 @@ Resources:
 * auto_ptr
 * Random shuffle - random_shuffle(first, last) and random_shuffle(first, last, rng)
 
-###Merged: The Parallelism TS, a.k.a. “Parallel STL.”,
+### Merged: The Parallelism TS, a.k.a. “Parallel STL.”,
 
 [P0024R2](http://isocpp.org/files/papers/P0024R2.html)
 
@@ -1055,7 +1067,7 @@ Articles:
 * [Bartek's coding blog: C++17 in details: Parallel Algorithms](http://www.bfilipek.com/2017/08/cpp17-details-parallel.html)
 * [Parallel Algorithm of the Standard Template Library - ModernesCpp.com](http://www.modernescpp.com/index.php/parallel-algorithm-of-the-standard-template-library)
 
-###Merged: File System TS,
+### Merged: File System TS,
 
 [P0218R1](https://isocpp.org/files/papers/P0218r1.html)
 
@@ -1077,19 +1089,19 @@ Articles:
 
 * [Bartek's coding blog: C++17 in details: Filesystem](http://www.bfilipek.com/2017/08/cpp17-details-filesystem.html)
 
-###Merged: The Mathematical Special Functions IS,
+### Merged: The Mathematical Special Functions IS,
 
 [PDF - WG21 P0226R1](https://isocpp.org/files/papers/P0226R1.pdf)
 
-###Improving [std::pair](http://en.cppreference.com/w/cpp/utility/pair) and [std::tuple](http://en.cppreference.com/w/cpp/utility/tuple)
+### Improving [std::pair](http://en.cppreference.com/w/cpp/utility/pair) and [std::tuple](http://en.cppreference.com/w/cpp/utility/tuple)
 
 [N4387](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4387.html)
 
-###[std::shared_mutex](http://en.cppreference.com/w/cpp/thread/shared_mutex) (untimed)
+### [std::shared_mutex](http://en.cppreference.com/w/cpp/thread/shared_mutex) (untimed)
 
 [N4508](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4508.html)
 
-###Variant
+### Variant
 
 [P0088R2](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0088r2.html)
 
@@ -1098,7 +1110,7 @@ Variant is a typesafe union that will report errors when you want to access some
 * [cppreference/variant](http://en.cppreference.com/w/cpp/utility/variant)
 * [IsoCpp: The Variant Saga: A happy ending?](https://isocpp.org/blog/2015/11/the-variant-saga-a-happy-ending)
 
-###Splicing Maps and Sets
+### Splicing Maps and Sets
 
 [P0083R2](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0083r2.pdf)
 
