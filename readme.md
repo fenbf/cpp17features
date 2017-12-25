@@ -987,7 +987,7 @@ auto get_value(T t) {
 
 Articles:
 
-* [LoopPerfect Blog, C++17 vs C++14 - Round 1 - if-constexpr](https://www.loopperfect.com/blog/c++-before-and-after-constexpr-if/)
+* [LoopPerfect Blog, C++17 vs C++14 - Round 1 - if-constexpr](https://medium.com/@LoopPerfect/c-17-vs-c-14-if-constexpr-b518982bb1e2)
 * [SO: constexpr if and static_assert](http://stackoverflow.com/questions/38304847/constexpr-if-and-static-assert)
 * [Simon Brand: Simplifying templates and #ifdefs with if constexpr](https://tartanllama.github.io/c++/2016/12/12/if-constexpr/)
 
