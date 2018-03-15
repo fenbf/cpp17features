@@ -1107,6 +1107,16 @@ Articles:
 
 Variant is a typesafe union that will report errors when you want to access something that's not currently inside the object.
 
+Notes:
+
+* Variant is not allowed to allocate additional (dynamic) memory.
+* A variant is not permitted to hold references, arrays, or the type void.
+* A variant is default initialized with the value of its first alternative.
+* If the first alternative type is not default constructible, then the variant must use std::monostate as the first alternative
+
+Have a look at more example in a separate article: 
+[C++17 in details: Standard Library Utilities -> Variant](http://www.bfilipek.com/2017/09/cpp17-details-utils.html#stdvariant)
+
 * [cppreference/variant](http://en.cppreference.com/w/cpp/utility/variant)
 * [IsoCpp: The Variant Saga: A happy ending?](https://isocpp.org/blog/2015/11/the-variant-saga-a-happy-ending)
 
