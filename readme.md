@@ -199,6 +199,7 @@ auto SumWithOne(Args... args){
 
 Articles:
 
+* [Bartek's coding blog: C++17 in details: Templates](http://www.bfilipek.com/2017/06/cpp17-details-templates.html#fold-expressions)
 * [C++ Truths: Folding Monadic Functions](http://cpptruths.blogspot.com/2017/01/folding-monadic-functions.html)
 * [Simon Brand: Exploding tuples with fold expressions](https://tartanllama.github.io/c++/2016/11/10/exploding-tuples-fold-expressions/)
 * [Baptiste Wicht: C++17 Fold Expressions](http://baptiste-wicht.com/posts/2015/05/cpp17-fold-expressions.html)
@@ -434,6 +435,7 @@ This is fixed in C++17 where template class constructors can deduce type paramet
 
 todo: deduction guides.
 
+- [Bartek's coding blog: C++17 in details: Templates](http://www.bfilipek.com/2017/06/cpp17-details-templates.html#template-argument-deduction-for-class-templates)
 - [A 4 min episode of C++ Weekly on class template argument type deduction](https://www.youtube.com/watch?v=dEBQL4KPSk8)
 - [A 4 min episode of C++ Weekly on deduction guides](https://www.youtube.com/watch?v=-3fVp0U4xi0)
 - [Modern C++ Features - Class Template Argument Deduction -](https://arne-mertz.de/2017/06/class-template-argument-deduction/)
@@ -458,12 +460,14 @@ f<10>();               // deduces int
 
 [P0135R1](http://wg21.link/p0135r1)
 
+Copy elision for temporary objects, not for Named RVO.
 
 | GCC: 7.0 | Clang: 4.0 | MSVC: not yet |
 |---------:|------------|------------|
 
 Articles:
 
+* [Bartek's coding blog: C++17 in details: language clarifications](http://www.bfilipek.com/2017/06/cpp17-details-clarifications.html#guaranteed-copy-elision)
 * [Jonas Devlieghere: Guaranteed Copy Elision](https://jonasdevlieghere.com/guaranteed-copy-elision/)
 
 ### New specification for inheriting constructors (DR1941 et al)
@@ -556,6 +560,7 @@ Summary of changes:
 
 Reference:
 
+* [Bartek's coding blog: C++17 in details: language clarifications](http://www.bfilipek.com/2017/06/cpp17-details-clarifications.html#stricter-expression-evaluation-order)
 * [C++ Order of evaluation, cppreference](http://en.cppreference.com/w/cpp/language/eval_order)
 * [SO: What are the evaluation order guarantees introduced by C++17?](http://stackoverflow.com/questions/38501587/what-are-the-evaluation-order-guarantees-introduced-by-c17)
 * [How compact code can become buggy code: getting caught by the order of evaluations, Fluent C++](http://www.fluentcpp.com/2017/05/09/compact-code-becomes-buggy-code-order-evaluations/)
@@ -673,7 +678,11 @@ void oops() {
     i_promise(); // Warning emitted, return value of a nodiscard function is discarded
 }
 ```
-[A 4 min video about [[nodiscard]] in Jason Turner's C++ Weekly](https://www.youtube.com/watch?v=l_5PF3GQLKc)
+
+Articles:
+
+* [Bartek's coding blog: Enforcing code contracts with \[\[nodiscard\]\]](http://www.bfilipek.com/2017/11/nodiscard.html)
+* [A 4 min video about nodiscard in Jason Turner's C++ Weekly](https://www.youtube.com/watch?v=l_5PF3GQLKc)
 
 ### [[maybe_unused]] attribute
 
@@ -695,7 +704,7 @@ void foo() {
 }
 ```
 
-[A 3 min video about [[maybe_unused]] in Jason Turner's C++ Weekly](https://www.youtube.com/watch?v=WSPmNL9834U)
+[A 3 min video about maybe_unused in Jason Turner's C++ Weekly](https://www.youtube.com/watch?v=WSPmNL9834U)
 
 
 ### Ignore unknown attributes
@@ -987,6 +996,7 @@ auto get_value(T t) {
 
 Articles:
 
+* [Bartek's coding blog: Simplify code with 'if constexpr' in C++17](http://www.bfilipek.com/2018/03/ifconstexpr.html)
 * [LoopPerfect Blog, C++17 vs C++14 - Round 1 - if-constexpr](https://medium.com/@LoopPerfect/c-17-vs-c-14-if-constexpr-b518982bb1e2)
 * [SO: constexpr if and static_assert](http://stackoverflow.com/questions/38304847/constexpr-if-and-static-assert)
 * [Simon Brand: Simplifying templates and #ifdefs with if constexpr](https://tartanllama.github.io/c++/2016/12/12/if-constexpr/)
@@ -1030,6 +1040,7 @@ The wording from those components comes from Library Fundamentals V2 to ensure t
 Resources:
 
 * [Marco Arena, string_view odi et amo](https://marcoarena.wordpress.com/2017/01/03/string_view-odi-et-amo/)
+* [Bartek's coding blog: C++17 in details: Standard Library Utilities](http://www.bfilipek.com/2017/09/cpp17-details-utils.html)
 
 ### Removal of some deprecated types and functions, including std::auto_ptr, std::random_shuffle, and old function adaptors
 
@@ -1037,7 +1048,7 @@ Resources:
 
 * Function objects - unary_function/binary_function, ptr_fun(), and mem_fun()/mem_fun_ref()
 * Binders - bind1st()/bind2nd()
-* auto_ptr
+* **auto_ptr**
 * Random shuffle - random_shuffle(first, last) and random_shuffle(first, last, rng)
 
 ### Merged: The Parallelism TS, a.k.a. “Parallel STL.”,
