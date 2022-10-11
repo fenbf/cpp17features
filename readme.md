@@ -412,7 +412,7 @@ void f(std::pair<int, char>);
 f(std::make_pair(42, 'z'));
 ```
 
-because `std::make_pair` is a _template function_ (so we can perform teplate deduction).
+because `std::make_pair` is a _template function_ (so we can perform template deduction).
 But the following wasn't:
 
 ```cpp
